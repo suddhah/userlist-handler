@@ -18,6 +18,7 @@ class XmlParser implements ParserInterface
                 throw new XmlParseException("Input data is empty.");
             }
 
+            libxml_use_internal_errors(true);
             $xmlObject = simplexml_load_string($data);
             if ($xmlObject === false) {
                 $errorMessage = "Error parsing XML:\n";
