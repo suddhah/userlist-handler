@@ -7,7 +7,7 @@ namespace Suddhah\UserListHandler\Facades;
 use Illuminate\Support\Facades\Facade as BaseFacade;
 use Suddhah\UserListHandler\UserListHandler;
 
-class Facade extends BaseFacade
+class UserListFacade extends BaseFacade
 {
     protected static function getFacadeAccessor(): string
     {

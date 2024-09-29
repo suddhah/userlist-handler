@@ -48,6 +48,10 @@ $result = $userListHandler->run($data, UserListHandler::TYPE_CSV);
 // 2. Если имеется доступ к имени файла, можно воспользоваться хелпером detect_type_by_name()
 $result = $userListHandler->run($data, detect_type_by_name($filename));
 ```
+##### Пример использования в контексте Laravel через фасад UserListFacade:
+```php
+UserListFacade::run($data, UserlistHandler::TYPE_JSON);
+````
 
 ##### Пример входящих данных
 ```json

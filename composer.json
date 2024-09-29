@@ -46,7 +46,7 @@
         "Suddhah\\UserListHandler\\Providers\\ServiceProvider"
       ],
       "aliases": {
-        "UserListHandler": "Suddhah\\UserListHandler\\Facades\\Facade"
+        "UserListFacade": "Suddhah\\UserListHandler\\Facades\\UserListFacade"
       }
     }
   }
