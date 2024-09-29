@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+    <user>
+        <id>1</id>
+        <name>Иван Петров</name>
+        <email>ivan@example.com</email>
+        <age>30</age>
+    </user>
+    <user>
+        <id>2</id>
+        <name>Мария Сидорова</name>
+        <email>maria@example.com</email>
+        <age>25</age>
+    </user>
+    <user>
+        <id>3</id>
+        <name>Алексей Иванов</name>
+        <email>alexey@example.com</email>
+        <age>35</age>
+    </user>
+</users>
