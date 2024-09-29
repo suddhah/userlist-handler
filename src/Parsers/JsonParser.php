@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Suddhah\UserListHandler\Parsers;
 
 use Suddhah\UserListHandler\Contracts\ParserInterface;
-use Suddhah\UserListHandler\Exceptions\JsonParseException;
+use Suddhah\UserListHandler\Exceptions\EmptyDataException;
+use Suddhah\UserListHandler\Exceptions\InvalidFormatException;
+use Suddhah\UserListHandler\Exceptions\ParserException;
 
 class JsonParser implements ParserInterface
 {
@@ -14,12 +16,12 @@ class JsonParser implements ParserInterface
         try {
             $json = json_decode($data, true);
             if (empty($json['users'])) {
-                throw new JsonParseException("Input data is empty.");
+                throw new EmptyDataException();
             }
             if (json_last_error() !== JSON_ERROR_NONE) {
-                throw new JsonParseException("Invalid JSON provided.");
+                throw new InvalidFormatException("Invalid JSON provided.");
             }
-        } catch (JsonParseException $e) {
+        } catch (ParserException $e) {
             throw $e;
         }
 

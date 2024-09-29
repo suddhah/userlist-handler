@@ -17,17 +17,13 @@ composer require suddhah/userlist-handler
 
 ##### Доступны три реализации парсера:
 
-JSON: `Suddhah\UserListHandler\Parsers\JsonParser`
+Каждая из которых возвращает массив с обработанными данными, либо EmptyDataException / InvalidFormatException
 
-- Возвращает массив с обработанными данными, либо JsonParseException
+JSON: `Suddhah\UserListHandler\Parsers\JsonParser`
 
 CSV: `Suddhah\UserListHandler\Parsers\CsvParser`
 
-- Возвращает массив с обработанными данными, либо CsvParseException
-
 XML: `Suddhah\UserListHandler\Parsers\XmlParser`
-
-- Возвращает массив с обработанными данными, либо XmlParseException
 
 ##### Пример использования:
 ```php

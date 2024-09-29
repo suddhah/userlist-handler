@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Suddhah\UserListHandler\Parsers;
 
 use Suddhah\UserListHandler\Contracts\ParserInterface;
-use Suddhah\UserListHandler\Exceptions\XmlParseException;
+use Suddhah\UserListHandler\Exceptions\EmptyDataException;
+use Suddhah\UserListHandler\Exceptions\InvalidFormatException;
+use Suddhah\UserListHandler\Exceptions\ParserException;
 
 class XmlParser implements ParserInterface
 {
@@ -15,7 +17,7 @@ class XmlParser implements ParserInterface
 
         try {
             if (empty($data)) {
-                throw new XmlParseException("Input data is empty.");
+                throw new EmptyDataException();
             }
 
             libxml_use_internal_errors(true);
@@ -25,14 +27,14 @@ class XmlParser implements ParserInterface
                 foreach (libxml_get_errors() as $error) {
                     $errorMessage .= "\t$error->message";
                 }
-                throw new XmlParseException($errorMessage);
+                throw new InvalidFormatException($errorMessage);
             } else {
                 $users = $xmlObject->user;
                 foreach ($users as $user) {
                     $result[] = get_object_vars($user);
                 }
             }
-        } catch (XmlParseException $e) {
+        } catch (ParserException $e) {
             throw $e;
         }
 

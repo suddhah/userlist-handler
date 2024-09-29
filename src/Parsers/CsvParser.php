@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Suddhah\UserListHandler\Parsers;
 
 use Suddhah\UserListHandler\Contracts\ParserInterface;
-use Suddhah\UserListHandler\Exceptions\CsvParseException;
+use Suddhah\UserListHandler\Exceptions\EmptyDataException;
+use Suddhah\UserListHandler\Exceptions\InvalidFormatException;
+use Suddhah\UserListHandler\Exceptions\ParserException;
 
 class CsvParser implements ParserInterface
 {
@@ -15,7 +17,7 @@ class CsvParser implements ParserInterface
 
         try {
             if (empty($data)) {
-                throw new CsvParseException("Input data is empty.");
+                throw new EmptyDataException();
             }
 
             $stream = fopen('php://temp', 'r+');
@@ -25,7 +27,7 @@ class CsvParser implements ParserInterface
             $headerKeys = fgetcsv($stream);
             if ($headerKeys === false) {
                 fclose($stream);
-                throw new CsvParseException("Headers are missing or empty.");
+                throw new InvalidFormatException("Headers are missing or empty.");
             }
 
             while (($values = fgetcsv($stream)) !== false) {
@@ -38,12 +40,12 @@ class CsvParser implements ParserInterface
                 if (count($headerKeys) === count($values)) {
                     $result[] = array_combine($headerKeys, $values);
                 } else {
-                    throw new CsvParseException("The number of values does not match the number of headings in the row.");
+                    throw new InvalidFormatException("The number of values does not match the number of headings in the row.");
                 }
             }
 
             fclose($stream);
-        } catch (CsvParseException $e) {
+        } catch (ParserException $e) {
             throw $e;
         }
 
