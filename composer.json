@@ -1,0 +1,53 @@
+{
+  "name": "suddhah/userlist-handler",
+  "description": "Laravel package for processing strings of various formats",
+  "type": "library",
+  "keywords": ["laravel", "string"],
+  "license": "MIT",
+  "homepage": "https://github.com/suddhah/userlist-handler",
+  "authors": [
+    {
+      "name": "Suddhah",
+      "email": "comadansu@protonmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.2"
+  },
+  "suggest": {
+    "ext-libxml": "*",
+    "ext-simplexml": "*",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^9.5",
+    "friendsofphp/php-cs-fixer": "^3.64"
+  },
+  "autoload": {
+    "psr-4": {
+      "Suddhah\\UserListHandler\\": "src/"
+    },
+    "files": [
+      "src/helpers.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Suddhah\\UserListHandler\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "lint": "php-cs-fixer fix -v",
+    "test": "phpunit"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Suddhah\\UserListHandler\\Providers\\ServiceProvider"
+      ],
+      "aliases": {
+        "UserListHandler": "Suddhah\\UserListHandler\\Facades\\Facade"
+      }
+    }
+  }
+}
