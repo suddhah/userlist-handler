@@ -21,7 +21,7 @@ class XmlParser implements ParserInterface
             libxml_use_internal_errors(true);
             $xmlObject = simplexml_load_string($data);
             if ($xmlObject === false) {
-                $errorMessage = "Error parsing XML:\n";
+                $errorMessage = "";
                 foreach (libxml_get_errors() as $error) {
                     $errorMessage .= "\t$error->message";
                 }
