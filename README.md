@@ -1,5 +1,3 @@
-[![Build Status](https://app.travis-ci.com/suddhah/userlist-handler.svg?branch=main)](https://app.travis-ci.com/suddhah/userlist-handler)
-
 # Laravel UserList Handler
 
 Пакет который обрабатывает строки различных форматов.
