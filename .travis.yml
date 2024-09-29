@@ -1,0 +1,16 @@
+language: php
+
+php:
+  - 8.2
+  - 8.3
+
+before_script:
+  - composer self-update
+  - composer install --no-interaction
+
+script:
+  - vendor/bin/phpunit
+  - test:lint
+
+notifications:
+  email: true
