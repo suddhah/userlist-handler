@@ -22,18 +22,13 @@ class CsvParser implements ParserInterface
 
             $stream = fopen('php://temp', 'r+');
             fwrite($stream, $data);
+            unset($data);
             rewind($stream);
 
             $headerKeys = fgetcsv($stream);
             if ($headerKeys === false) {
                 fclose($stream);
                 throw new InvalidFormatException("Headers are missing or empty.");
-            }
-
-            while (($values = fgetcsv($stream)) !== false) {
-                if (count($headerKeys) === count($values)) {
-                    $result[] = array_combine($headerKeys, $values);
-                }
             }
 
             while (($values = fgetcsv($stream)) !== false) {

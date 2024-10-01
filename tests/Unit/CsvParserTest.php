@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Suddhah\UserListHandler\Tests\Unit;
 
-use Suddhah\UserListHandler\Exceptions\CsvParseException;
+use Suddhah\UserListHandler\Exceptions\ParserException;
 use Suddhah\UserListHandler\Parsers\CsvParser;
 use Suddhah\UserListHandler\Tests\TestCase;
 
@@ -30,7 +30,7 @@ class CsvParserTest extends TestCase
         $this->assertEquals(self::TEST_USER_EMAIL, $result[1]['email']);
         $this->assertEquals(self::TEST_USER_AGE, $result[2]['age']);
 
-        $this->expectException(CsvParseException::class);
+        $this->expectException(ParserException::class);
         $parser->parse('');
     }
 }
